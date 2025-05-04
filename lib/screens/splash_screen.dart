@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:doctor_finder_flutter/providers/auth_provider.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -18,14 +19,28 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _navigateToNextScreen() async {
-    await Future.delayed(const Duration(seconds: 3));
+    try {
+      // Ensure Firebase is initialized
+      if (Firebase.apps.isEmpty) {
+        await Firebase.initializeApp();
+      }
 
-    if (mounted) {
-      final authProvider = Provider.of<AuthProvider>(context, listen: false);
+      // Add delay for splash screen
+      await Future.delayed(const Duration(seconds: 3));
 
-      if (authProvider.isLoggedIn) {
-        context.go('/home');
-      } else {
+      if (mounted) {
+        final authProvider = Provider.of<AuthProvider>(context, listen: false);
+
+        if (authProvider.isLoggedIn) {
+          context.go('/home');
+        } else {
+          context.go('/auth');
+        }
+      }
+    } catch (e) {
+      print('Error in splash navigation: $e');
+      if (mounted) {
+        // Navigate to auth on error
         context.go('/auth');
       }
     }

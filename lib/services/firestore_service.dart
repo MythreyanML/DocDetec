@@ -6,6 +6,18 @@ import 'package:doctor_finder_flutter/models/specialty_model.dart';
 import 'package:doctor_finder_flutter/services/firebase_service.dart';
 
 class FirestoreService {
+  // Add debug method to test connection
+  static Future<void> testConnection() async {
+    try {
+      print('Testing Firestore connection...');
+      final testCollection = FirebaseService.firestore.collection('test');
+      await testCollection.doc('test').set({'timestamp': DateTime.now()});
+      print('Firestore connection successful!');
+    } catch (e) {
+      print('Firestore connection failed: $e');
+    }
+  }
+
   // Doctor operations
   static Stream<List<DoctorModel>> getDoctorsStream() {
     return FirebaseService.doctorsCollection.snapshots().map((snapshot) =>

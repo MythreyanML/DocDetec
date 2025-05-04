@@ -17,6 +17,23 @@ final GlobalKey<NavigatorState> _profileNavigatorKey = GlobalKey<NavigatorState>
 final appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
   initialLocation: '/splash',
+  errorBuilder: (context, state) => Scaffold(
+    body: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.error, size: 64, color: Colors.red),
+          const SizedBox(height: 16),
+          Text('Error: ${state.error}'),
+          const SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: () => context.go('/'),
+            child: const Text('Go Home'),
+          ),
+        ],
+      ),
+    ),
+  ),
   routes: [
     GoRoute(
       path: '/splash',

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:doctor_finder_flutter/models/user_model.dart';
 import 'package:doctor_finder_flutter/services/auth_service.dart';
+import 'package:doctor_finder_flutter/services/firebase_service.dart';
 
 class AuthProvider extends ChangeNotifier {
   UserModel? _currentUser;
@@ -18,15 +19,26 @@ class AuthProvider extends ChangeNotifier {
   }
 
   void _initialize() {
-    // Listen for auth state changes
-    FirebaseAuth.instance.authStateChanges().listen((User? user) async {
-      if (user != null) {
-        await _fetchUserData();
-      } else {
-        _currentUser = null;
-        notifyListeners();
-      }
-    });
+    // Check if Firebase services are initialized
+    _checkAndSetupAuthListener();
+  }
+
+  Future<void> _checkAndSetupAuthListener() async {
+    try {
+      // Listen for auth state changes
+      FirebaseService.auth.authStateChanges().listen((User? user) async {
+        if (user != null) {
+          await _fetchUserData();
+        } else {
+          _currentUser = null;
+          notifyListeners();
+        }
+      });
+    } catch (e) {
+      print('Error initializing auth provider: $e');
+      _error = e.toString();
+      notifyListeners();
+    }
   }
 
   Future<void> _fetchUserData() async {

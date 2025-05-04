@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
 import 'package:doctor_finder_flutter/providers/doctor_provider.dart';
+import 'package:doctor_finder_flutter/providers/auth_provider.dart';
 import 'package:doctor_finder_flutter/widgets/common/doctor_card.dart';
 import 'package:doctor_finder_flutter/widgets/common/loading_indicator.dart';
 
@@ -27,8 +28,13 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('Find Doctors'),
       ),
-      body: Consumer<DoctorProvider>(
-        builder: (context, doctorProvider, child) {
+      body: Consumer2<DoctorProvider, AuthProvider>(
+        builder: (context, doctorProvider, authProvider, child) {
+          // Show loading if authentication is still being determined
+          if (authProvider.isLoading) {
+            return const Center(child: LoadingIndicator());
+          }
+
           return Column(
             children: [
               _buildSearchHeader(doctorProvider),

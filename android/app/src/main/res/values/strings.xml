@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Doctor Finder</string>
+    <string name="google_maps_key">AIzaSyB1wnhHnT5QhKvFcOXiiqiTmxoNnVqAC2I</string>
+</resources>

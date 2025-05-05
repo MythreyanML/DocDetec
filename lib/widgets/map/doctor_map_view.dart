@@ -34,7 +34,9 @@ class _DoctorMapViewState extends State<DoctorMapView> {
           snippet: widget.doctor.address,
         ),
       );
-      _markers = {marker};
+      setState(() {
+        _markers = {marker};
+      });
     }
   }
 
@@ -56,6 +58,8 @@ class _DoctorMapViewState extends State<DoctorMapView> {
       markers: _markers,
       myLocationButtonEnabled: true,
       mapType: MapType.normal,
+      zoomControlsEnabled: true,
+      myLocationEnabled: true,
     );
   }
 

@@ -8,12 +8,24 @@ import 'package:doctor_finder_flutter/providers/doctor_provider.dart';
 import 'package:doctor_finder_flutter/providers/appointment_provider.dart';
 import 'package:doctor_finder_flutter/providers/review_provider.dart';
 import 'package:doctor_finder_flutter/router/app_router.dart';
+import 'package:doctor_finder_flutter/services/firebase_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+
+  try {
+    // Initialize Firebase first
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+
+    // Then initialize Firebase services
+    await FirebaseService.initialize();
+
+    print('Firebase and Firebase services initialized successfully');
+  } catch (e) {
+    print('Firebase initialization error: $e');
+  }
 
   runApp(const MyApp());
 }
@@ -26,9 +38,18 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
-        ChangeNotifierProvider(create: (_) => DoctorProvider()),
-        ChangeNotifierProvider(create: (_) => AppointmentProvider()),
-        ChangeNotifierProvider(create: (_) => ReviewProvider()),
+        ChangeNotifierProxyProvider<AuthProvider, DoctorProvider>(
+          create: (_) => DoctorProvider(),
+          update: (_, auth, doctorProvider) => doctorProvider ?? DoctorProvider(),
+        ),
+        ChangeNotifierProxyProvider<AuthProvider, AppointmentProvider>(
+          create: (_) => AppointmentProvider(),
+          update: (_, auth, appointmentProvider) => appointmentProvider ?? AppointmentProvider(),
+        ),
+        ChangeNotifierProxyProvider<AuthProvider, ReviewProvider>(
+          create: (_) => ReviewProvider(),
+          update: (_, auth, reviewProvider) => reviewProvider ?? ReviewProvider(),
+        ),
       ],
       child: MaterialApp.router(
         title: 'Doctor Finder',

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "503534317679",
+    "project_id": "docdetec",
+    "storage_bucket": "docdetec.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503534317679:android:942059422f033c10721d9a",
+        "android_client_info": {
+          "package_name": "com.example.docdetec"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh1imOC3zSroryJFRAxd4i241y94F3TEc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

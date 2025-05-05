@@ -316,7 +316,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
         id: '',
         doctorId: widget.doctorId,
         userId: user.id,
-        userName: user.name ?? user.email ?? 'Anonymous',
+        userName: user.name,
         rating: _rating,
         text: _reviewController.text,
         createdAt: DateTime.now(),

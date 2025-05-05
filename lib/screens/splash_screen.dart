@@ -55,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/logo.png',
+              'assets/images/fullLogo.png',
               width: 150,
               height: 150,
               errorBuilder: (context, error, stackTrace) {
@@ -77,24 +77,24 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             const SizedBox(height: 10),
             const Text(
-              'Find Doctors Near You',
+              'Detect your Doctors!',
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 25,
                 color: Colors.white,
               ),
             ),
             const SizedBox(height: 100),
             const Text(
-              'Developed by: Your Name',
+              'Developed by yours truly: Mythreyan Manjesh Lal',
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.white,
               ),
             ),
             const Text(
-              'NB22000934',
+              'MM23019011',
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 14,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),

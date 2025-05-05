@@ -48,5 +48,6 @@ flutter:
 
   # Assets section
   assets:
-    - assets/images/logo.png
+    - assets/images/smallLogo.png
     - assets/images/doctor-placeholder.png
+    - assets/images/fullLogo.png

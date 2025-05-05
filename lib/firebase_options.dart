@@ -47,19 +47,21 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDjn6D2MIelGDwnleVX3kXausuz5slswKY',
-    appId: '1:489321981801:android:821d8266c36a1a86213ff8',
-    messagingSenderId: '489321981801',
-    projectId: 'doctor-finder-b94c2',
-    storageBucket: 'doctor-finder-b94c2.firebasestorage.app',
+    apiKey: 'AIzaSyCh1imOC3zSroryJFRAxd4i241y94F3TEc',
+    appId: '1:503534317679:android:942059422f033c10721d9a',
+    messagingSenderId: '503534317679',
+    projectId: 'docdetec',
+    storageBucket: 'docdetec.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDjn6D2MIelGDwnleVX3kXausuz5slswKY',
-    appId: '1:489321981801:ios:821d8266c36a1a86213ff8',
-    messagingSenderId: '489321981801',
-    projectId: 'doctor-finder-b94c2',
-    storageBucket: 'doctor-finder-b94c2.firebasestorage.app',
-    iosBundleId: 'com.example.doctorFinderFlutter',
+    apiKey: 'AIzaSyC35bOthY3dII2M5RrL0AGWHY3ZZNZJ1Fo',
+    appId: '1:503534317679:ios:b03b8a63c7dc54fb721d9a',
+    messagingSenderId: '503534317679',
+    projectId: 'docdetec',
+    storageBucket: 'docdetec.firebasestorage.app',
+    iosBundleId: 'com.example.doctorFinder',
   );
+
+  
 }

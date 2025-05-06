@@ -56,30 +56,18 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Image.asset(
               'assets/images/fullLogo.png',
-              width: 150,
-              height: 150,
+              width: 300,
+              height: 300,
               errorBuilder: (context, error, stackTrace) {
-                return const Icon(
-                  Icons.medical_services,
-                  size: 150,
-                  color: Colors.white,
-                );
               },
             ),
             const SizedBox(height: 20),
-            const Text(
-              'Doctor Finder',
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
+            
             const SizedBox(height: 10),
             const Text(
               'Detect your Doctors!',
               style: TextStyle(
-                fontSize: 25,
+                fontSize: 20,
                 color: Colors.white,
               ),
             ),

@@ -55,12 +55,17 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/fullLogo.png',
-              width: 300,
-              height: 300,
-              errorBuilder: (context, error, stackTrace) {
-              },
-            ),
+  'assets/images/fullLogo.png',
+  width: 300,
+  height: 300,
+  errorBuilder: (context, error, stackTrace) {
+    return const Icon(
+      Icons.image_not_supported,
+      size: 300,
+      color: Colors.white,
+    );
+  },
+),
             const SizedBox(height: 20),
             
             const SizedBox(height: 10),
